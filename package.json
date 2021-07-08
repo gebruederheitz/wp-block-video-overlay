@@ -1,0 +1,38 @@
+{
+  "name": "@gebruederheitz/wp-block-video-overlay",
+  "version": "1.0.0",
+  "description": "A Gutenberg block creating a video in a lightbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint frontend/ editor/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gebruederheitz/wp-block-video-overlay.git"
+  },
+  "keywords": [
+    "Wordpress",
+    "Gutenberg",
+    "Lightbox"
+  ],
+  "author": "Andreas Maros <andreas.maros@gebruederheitz.de>",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/gebruederheitz/wp-block-video-overlay/issues"
+  },
+  "homepage": "https://github.com/gebruederheitz/wp-block-video-overlay#readme",
+  "dependencies": {
+    "@gebruederheitz/wp-editor-components": "^1.0.0",
+    "classnames": "^2.3.1",
+    "glightbox": "^3.0.9",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.2"
+  }
+}
