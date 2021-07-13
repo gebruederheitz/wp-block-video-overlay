@@ -1,14 +1,16 @@
 /* global editorData */
 import { data } from 'wp';
 
-import {
+import { utils } from '@gebruederheitz/wp-editor-components';
+
+const {
     getVimeoThumbnailUrlByVideoId,
     getVimeoVideoIdFromUrl,
     getYoutubeThumbnailUrlByVideoId,
     getYoutubeVideoIdFromUrl,
     isVimeoUrl,
     isYoutubeUrl,
-} from '@gebruederheitz/wp-editor-components/utils/video-provider-utilities';
+} = utils.videoProviderUtils;
 
 const { dispatch } = data;
 

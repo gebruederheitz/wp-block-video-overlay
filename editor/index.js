@@ -1,6 +1,6 @@
 import { blocks, i18n } from 'wp';
 
-import { QueuePlayNext as VideoOverlayIcon } from '@gebruederheitz/wp-editor-components/icons/material-design-icons';
+import { icons } from '@gebruederheitz/wp-editor-components';
 import { attributes } from './attributes';
 import { deprecated } from './deprecated';
 import { edit } from './edit';
@@ -8,6 +8,7 @@ import { save } from './save';
 
 const { registerBlockType } = blocks;
 const { __ } = i18n;
+const { QueuePlayNext: VideoOverlayIcon } = icons;
 
 export function register({
     attributes = attributes,
