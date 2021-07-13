@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/wp-block-video-overlay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Gutenberg block creating a video in a lightbox",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
