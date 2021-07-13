@@ -11,6 +11,9 @@
     "prepare": "npm run build",
     "postinstall": "npm run build"
   },
+  "engines": {
+    "node": "^15.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gebruederheitz/wp-block-video-overlay.git"
