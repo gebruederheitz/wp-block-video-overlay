@@ -2,18 +2,14 @@ import classnames from 'classnames';
 
 import { PlayCircle as PlayIcon } from '../components/PlayCircle';
 import { convertYoutubeToNoCookieDomain } from '../utils/videoSearchUtilities';
-import { utils } from '@gebruederheitz/wp-editor-components';
-
-const {
-    videoProviderUtils: { isYoutubeUrl },
-} = utils;
+import { videoProviderUtils } from '@gebruederheitz/wp-editor-components';
 
 export default (props) => {
     const {
         attributes: { mediaAltText, mediaID, mediaURL, videoUrl },
     } = props;
 
-    const isYoutube = isYoutubeUrl(videoUrl);
+    const isYoutube = videoProviderUtils.isYoutubeUrl(videoUrl);
 
     return (
         <div className="ghwp-video">

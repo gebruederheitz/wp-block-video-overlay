@@ -8,13 +8,15 @@ import {
 import { getEmbedTypeOptions } from './utils/getEmbedTypeOptions';
 
 import { PlayCircle as PlayIcon } from './components/PlayCircle';
-import { components as ghcomponents } from '@gebruederheitz/wp-editor-components';
+import {
+    ImageSelect,
+    SpinnerOverlay,
+} from '@gebruederheitz/wp-editor-components';
 import { VideoSearch } from './components/VideoSearch';
 
 const { Button, Icon, Placeholder, Popover, SelectControl } = components;
 const { withState } = wpCompose;
 const { __ } = i18n;
-const { ImageSelect, SpinnerOverlay } = ghcomponents;
 
 const HelpPopoverContent = () => (
     <div className="ghwp-editor-help">

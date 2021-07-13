@@ -1,7 +1,7 @@
 /* global editorData */
 import { data } from 'wp';
 
-import { utils } from '@gebruederheitz/wp-editor-components';
+import { videoProviderUtils } from '@gebruederheitz/wp-editor-components';
 
 const {
     getVimeoThumbnailUrlByVideoId,
@@ -10,7 +10,7 @@ const {
     getYoutubeVideoIdFromUrl,
     isVimeoUrl,
     isYoutubeUrl,
-} = utils.videoProviderUtils;
+} = videoProviderUtils;
 
 const { dispatch } = data;
 
