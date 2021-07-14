@@ -127,3 +127,46 @@ window.editorData = {
     embedTypes: [], // An array of possible embed types when used with a consent management solution. Pass `null` to skip.
 }
 ```
+
+### Styling
+
+You may use and extend the default styles provided by this package in your 
+(S)CSS:
+```sass
+// Your frontend SASS file
+
+// Override the default variable values if you need to
+$ghwp-vo-icon-class: icon-play-circle;
+$ghwp-vo-icon-fg: #fff;
+$ghwp-vo-icon-fill: currentColor;
+$ghwp-vo-icon-size: 128px;
+$ghwp-vo-icon-z-index: 10;
+$ghwp-vo-vertical-margin: 1rem;
+
+// Import the stylesheet
+@use 'node_modules/@gebruederheitz/wp-block-video-overlay/scss/video-overlay';
+```
+
+```sass
+// Your editor SASS file
+
+// Override the default variable values if you need to
+$ghwp-vo-bg-color: #ccc;
+$ghwp-vo-max-width: 50%;
+$ghwp-vo-help-font-size: 0.666em;
+
+// Import the stylesheet
+@use 'node_modules/@gebruederheitz/wp-block-video-overlay/scss/video-overlay.editor';
+```
+
+Or use the precompiled CSS files:
+```html
+<link 
+  rel="stylesheet"
+  href="/path/to/node_modules/@gebruederheitz/wp-block-video-overlay/dist/video-overlay.css"
+/>
+<link 
+  rel="stylesheet"
+  href="/path/to/node_modules/@gebruederheitz/wp-block-video-overlay/dist/video-overlay.editor.css"
+/>
+```

@@ -1,0 +1,84 @@
+// BLOCK: VIDEO LINK
+// --------------------------------------------------------------------
+
+// Variables
+$ghwp-vo-bg-color: #ccc !default;
+$ghwp-vo-max-width: 50% !default;
+$ghwp-vo-help-font-size: 0.666em !default;
+
+.wp-block[data-type='ghwp/video-overlay'] {
+    transition: all 300ms ease;
+
+    &.is-selected {
+        background-color: $ghwp-vo-bg-color;
+        padding: 1rem;
+    }
+}
+
+.ghwp-video-link {
+    max-width: $ghwp-vo-max-width;
+    margin: 0 auto;
+    background-color: $ghwp-vo-bg-color;
+}
+
+.ghwp-video-edit {
+    display: flex;
+    flex-flow: row wrap;
+
+    .ghwp-video {
+        flex: 1 1 800px;
+        background: transparent;
+    }
+
+    &__settings {
+        align-items: center;
+        display: flex;
+        flex: 0 1 0;
+        flex-flow: column nowrap;
+        transition: all 200ms ease;
+
+        &--active {
+            flex-basis: 200px;
+            padding: 12px;
+        }
+
+        .ghwp-editor-image-select {
+            width: 100%;
+
+            .button-group {
+                display: flex;
+                flex-flow: column nowrap;
+            }
+        }
+
+        button.components-button {
+            width: 100%;
+        }
+
+        .help {
+            padding: 12px;
+            font-size: $ghwp-vo-help-font-size;
+            font-style: italic;
+        }
+    }
+
+    &__search {
+        flex: 0 0 0;
+        transition: all 200ms ease;
+
+        &--active {
+            flex-basis: 100%;
+            padding: 12px;
+            border-top: 1px solid #aaa;
+        }
+    }
+
+    &__provider-thumb {
+        width: 100%;
+        height: auto;
+    }
+
+    .wp-core-ui select {
+        max-width: none;
+    }
+}

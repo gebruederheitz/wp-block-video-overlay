@@ -1,0 +1,48 @@
+// BLOCK: VIDEO LINK & OVERLAY
+// --------------------------------------------------------------------
+@use "sass:math";
+
+// Variables
+$ghwp-vo-icon-class: icon-play-circle !default;
+$ghwp-vo-icon-fg: #fff !default;
+$ghwp-vo-icon-fill: currentColor !default;
+$ghwp-vo-icon-size: 128px !default;
+$ghwp-vo-icon-z-index: 10 !default;
+$ghwp-vo-vertical-margin: 1rem !default;
+
+.ghwp-video {
+    display: block;
+    margin-top: $ghwp-vo-vertical-margin;
+    margin-bottom: $ghwp-vo-vertical-margin;
+}
+
+.ghwp-video-link {
+    display: block;
+    position: relative;
+
+    &,
+    &:visited {
+        color: rgba($ghwp-vo-icon-fg, 0.8);
+        transition: color 0.25s linear;
+    }
+
+    &:hover,
+    &:focus {
+        color: $ghwp-vo-icon-fg;
+        transition: color 0.25s linear;
+    }
+
+    > img {
+        width: 100%;
+    }
+
+    .#{$ghwp-vo-icon-class} {
+        fill: $ghwp-vo-icon-fill;
+        height: $ghwp-vo-icon-size;
+        position: absolute;
+        top: calc(50% - #{math.div($ghwp-vo-icon-size, 2)});
+        left: calc(50% - #{math.div($ghwp-vo-icon-size, 2)});
+        z-index: 10;
+        width: $ghwp-vo-icon-size;
+    }
+}
