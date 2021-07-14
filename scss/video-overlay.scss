@@ -42,7 +42,7 @@ $ghwp-vo-vertical-margin: 1rem !default;
         position: absolute;
         top: calc(50% - #{math.div($ghwp-vo-icon-size, 2)});
         left: calc(50% - #{math.div($ghwp-vo-icon-size, 2)});
-        z-index: 10;
+        z-index: $ghwp-vo-icon-z-index;
         width: $ghwp-vo-icon-size;
     }
 }
