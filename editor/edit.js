@@ -18,11 +18,21 @@ const { Button, Icon, Placeholder, Popover, SelectControl } = components;
 const { withState } = wpCompose;
 const { __ } = i18n;
 
+const helpPopoverH6Style = {
+    textTransform: 'none',
+    marginBottom: '0.5em',
+    fontSize: '1rem',
+    marginTop: 0,
+};
+
 const HelpPopoverContent = () => (
-    <div className="ghwp-editor-help">
-        <ul>
+    <div
+        className="ghwp-editor-help"
+        style={{ padding: '0.75rem 1.5rem', minWidth: '320px' }}
+    >
+        <ul style={{ listStyle: 'disc' }}>
             <li>
-                <h6>
+                <h6 style={helpPopoverH6Style}>
                     {__('Retry getting original thumbnail', 'ghwp')} /{' '}
                     {__('Try to get the original thumbnail', 'ghwp')}
                 </h6>
@@ -33,7 +43,9 @@ const HelpPopoverContent = () => (
                 </p>
             </li>
             <li>
-                <h6>{__('Sideload the provider image', 'ghwp')}</h6>
+                <h6 style={helpPopoverH6Style}>
+                    {__('Sideload the provider image', 'ghwp')}
+                </h6>
                 <p>
                     Will save the thumbnail retrieved from the video provider to
                     the local media library and set it as the video block&apos;s
@@ -41,7 +53,9 @@ const HelpPopoverContent = () => (
                 </p>
             </li>
             <li>
-                <h6>{__('Change thumbnail image', 'ghwp')}</h6>
+                <h6 style={helpPopoverH6Style}>
+                    {__('Change thumbnail image', 'ghwp')}
+                </h6>
                 <p>
                     Allows you to pick an existing image or upload an image to
                     use as the thumbnail picture for the video block.

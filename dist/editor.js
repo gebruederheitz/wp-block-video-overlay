@@ -10660,11 +10660,31 @@ var Button = components.Button,
     SelectControl = components.SelectControl;
 var withState = compose.withState;
 var __$1 = i18n.__;
+var helpPopoverH6Style = {
+  textTransform: 'none',
+  marginBottom: '0.5em',
+  fontSize: '1rem',
+  marginTop: 0
+};
 
 var HelpPopoverContent = function HelpPopoverContent() {
   return /*#__PURE__*/React.createElement("div", {
-    className: "ghwp-editor-help"
-  }, /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", null, __$1('Retry getting original thumbnail', 'ghwp'), " /", ' ', __$1('Try to get the original thumbnail', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Attempts to retrieve the thumbnail image from the Video provider (Youtube / Vimeo). You will see a preview of that image above the button.")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", null, __$1('Sideload the provider image', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Will save the thumbnail retrieved from the video provider to the local media library and set it as the video block's thumbnail image.")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", null, __$1('Change thumbnail image', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Allows you to pick an existing image or upload an image to use as the thumbnail picture for the video block."))));
+    className: "ghwp-editor-help",
+    style: {
+      padding: '0.75rem 1.5rem',
+      minWidth: '320px'
+    }
+  }, /*#__PURE__*/React.createElement("ul", {
+    style: {
+      listStyle: 'disc'
+    }
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", {
+    style: helpPopoverH6Style
+  }, __$1('Retry getting original thumbnail', 'ghwp'), " /", ' ', __$1('Try to get the original thumbnail', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Attempts to retrieve the thumbnail image from the Video provider (Youtube / Vimeo). You will see a preview of that image above the button.")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", {
+    style: helpPopoverH6Style
+  }, __$1('Sideload the provider image', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Will save the thumbnail retrieved from the video provider to the local media library and set it as the video block's thumbnail image.")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("h6", {
+    style: helpPopoverH6Style
+  }, __$1('Change thumbnail image', 'ghwp')), /*#__PURE__*/React.createElement("p", null, "Allows you to pick an existing image or upload an image to use as the thumbnail picture for the video block."))));
 };
 
 var VideoEditSettings = function VideoEditSettings(props) {
