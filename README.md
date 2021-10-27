@@ -109,6 +109,13 @@ const lbf = new LightboxFactory(plyrOptions);I
 lbf.all();
 ```
 
+You can also skip the customization by passing `false` to the constructor:
+
+```js
+const lbf = new LightboxFactory(false);I
+```
+
+This way, the default assets will be loaded from a CDN.
 
 
 ### Rendering the block's output
