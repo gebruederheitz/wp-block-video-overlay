@@ -38,7 +38,7 @@ export class LightboxFactory {
     }
 
     /**
-     * Creates a lightbox for every image link.
+     * Creates a lightbox for every image link and video.
      */
     all(selector) {
         this.images();
@@ -64,5 +64,19 @@ export class LightboxFactory {
         } else {
             return new GLightbox({ selector });
         }
+    }
+
+    /**
+     * Allows you to pass your own options object to the GLightbox constructor.
+     *
+     * @param {object} options The GLightbox constructor argument
+     * @return {GLightbox}
+     */
+    custom(options) {
+        if (this.plyrOptions && !options.plyr) {
+            options.plyr = this.plyrOptions;
+        }
+
+        return new GLightbox(options);
     }
 }
