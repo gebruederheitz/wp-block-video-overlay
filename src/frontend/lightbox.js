@@ -14,8 +14,11 @@ const defaultPlyrOptions = {
 };
 
 export class LightboxFactory {
-    constructor(plyrOptions) {
-        this.plyrOptions = _merge(defaultPlyrOptions, plyrOptions);
+    constructor(plyrOptions = {}) {
+        this.plyrOptions =
+            plyrOptions === false
+                ? null
+                : _merge(defaultPlyrOptions, plyrOptions);
     }
 
     images() {
