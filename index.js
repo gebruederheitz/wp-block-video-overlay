@@ -1,4 +1,2 @@
-import { LightboxFactory } from './frontend/lightbox';
-import { register, attributes, edit, save } from './editor';
-
-export { LightboxFactory, register, attributes, edit, save };
+export { LightboxFactory } from './dist/frontend';
+export { register, attributes, edit, save } from './dist/editor';

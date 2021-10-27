@@ -29,7 +29,7 @@ export default [
             'wp',
             /@babel\/runtime/,
         ],
-        input: 'editor/index.js',
+         input: 'src/editor/index.js',
         output: {
             file: 'dist/editor.js',
             format: 'esm',
@@ -47,7 +47,7 @@ export default [
         external: [
             /@babel\/runtime/,
         ],
-        input: 'frontend/lightbox.js',
+        input: 'src/frontend/lightbox.js',
         output: {
             file: 'dist/frontend.js',
             format: 'esm',
