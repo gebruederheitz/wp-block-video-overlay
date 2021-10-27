@@ -75,6 +75,10 @@ lbf.all('#my-lightbox');
 lbf.all('[href$=".webp"]');
 // Use a custom selector
 lbf.create('.lightbox');
+// Use a custom configuration object for GLightbox
+lbf.custom({
+  /* GLightbox configuration object */
+});
 ```
 
 
