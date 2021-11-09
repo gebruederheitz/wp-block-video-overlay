@@ -2,12 +2,12 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 
-const babelConfig = {
+const babelConfig = (bundledHelpers = false) => ({
     babelrc: false,
     exclude: [/\/core-js\//, 'node_modules/**'],
     sourceMaps: true,
     inputSourceMap: true,
-    babelHelpers: 'runtime',
+    babelHelpers: bundledHelpers ? 'bundled' : 'runtime',
     presets: [
         [
             '@babel/preset-env',
@@ -17,11 +17,11 @@ const babelConfig = {
             }
         ],
     ],
-    plugins: [
-        '@babel/plugin-transform-react-jsx',
+    plugins: bundledHelpers ? ['@babel/plugin-transform-react-jsx'] : [
         '@babel/plugin-transform-runtime',
+        '@babel/plugin-transform-react-jsx',
     ],
-};
+});
 
 export default [
     {
@@ -29,32 +29,41 @@ export default [
             'wp',
             /@babel\/runtime/,
         ],
-         input: 'src/editor/index.js',
+        input: {
+            'index': "src/index.js",
+            'editor': "src/editor/index.js",
+            'frontend': "src/frontend/lightbox.js",
+        },
         output: {
-            file: 'dist/editor.js',
+            dir: 'dist/',
             format: 'esm',
             globals: {
                 wp: 'wp',
             },
+            entryFileNames: '[name].m.js',
         },
         plugins: [
             resolve(),
-            babel(babelConfig),
+            babel(babelConfig()),
             commonjs(),
         ],
     },
     {
         external: [
-            /@babel\/runtime/,
+            'wp',
         ],
-        input: 'src/frontend/lightbox.js',
+        input: 'src/index.js',
         output: {
-            file: 'dist/frontend.js',
-            format: 'esm',
+            file: 'dist/index.umd.js',
+            format: 'umd',
+            name: 'ghWpBlockVideoOverlay',
+            globals: {
+                wp: 'wp',
+            }
         },
         plugins: [
             resolve(),
-            babel(babelConfig),
+            babel(babelConfig(true)),
             commonjs(),
         ],
     },
