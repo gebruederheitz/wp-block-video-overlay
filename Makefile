@@ -1,8 +1,19 @@
 build:
-	npm i && npm run build
+	@. $$NVM_DIR/nvm.sh &&\
+		nvm use && \
+		npm i && npm run build
 
 test:
-	npm i && npm run lint
+	@. $$NVM_DIR/nvm.sh &&\
+		nvm use && \
+		npm i && npm run lint
 
 dev:
-	npm i && npm run build
+	@. $$NVM_DIR/nvm.sh &&\
+ 		nvm use && \
+		npm i && npm run build
+
+release:
+	@. $$NVM_DIR/nvm.sh &&\
+ 		nvm use && \
+		npm run release
