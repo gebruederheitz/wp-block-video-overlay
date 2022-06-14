@@ -13,8 +13,17 @@ import {
     SpinnerOverlay,
 } from '@gebruederheitz/wp-editor-components';
 import { VideoSearch } from './components/VideoSearch';
+import { getVideoEmbed } from '@gebruederheitz/wp-editor-components/utils/video-provider-utilities';
 
-const { Button, Icon, Placeholder, Popover, SelectControl } = components;
+const {
+    BaseControl,
+    Button,
+    ButtonGroup,
+    Icon,
+    Placeholder,
+    Popover,
+    SelectControl,
+} = components;
 const { withState } = wpCompose;
 const { __ } = i18n;
 
@@ -143,9 +152,40 @@ const VideoEditSettings = (props) => {
     );
 };
 
+const TypeSelector = ({ attributes: { type, videoUrl }, setAttributes }) => (
+    <BaseControl label={'Type'}>
+        <ButtonGroup>
+            <Button
+                isPrimary
+                isPressed={type === 'overlay'}
+                onClick={() => {
+                    setAttributes({
+                        type: 'overlay',
+                    });
+                }}
+            >
+                Overlay
+            </Button>
+            <Button
+                isPrimary
+                isPressed={type === 'inline'}
+                onClick={() => {
+                    setAttributes({
+                        type: 'inline',
+                        videoEmbedUrl: getVideoEmbed(videoUrl),
+                    });
+                }}
+            >
+                Inline
+            </Button>
+        </ButtonGroup>
+    </BaseControl>
+);
+
 const Edit = (props) => {
     const {
         attributes: { mediaAltText, mediaURL, providerType, videoUrl },
+        children,
         isLoading,
         isSelected,
         search,
@@ -195,6 +235,8 @@ const Edit = (props) => {
                                             }}
                                         />
                                     )}
+                                    <TypeSelector {...props} />
+                                    {children}
                                 </>
                             )}
                         </div>

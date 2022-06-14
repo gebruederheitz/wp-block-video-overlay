@@ -58,6 +58,47 @@ register({
 
 ```
 
+If you're only adding an attribute, you can simply add controls to the existing
+Edit component:
+
+```js
+import { components } from 'wp';
+import {register, attributes, edit as Edit} from '@gebruederheitz/wp-block-video-overlay';
+import {MyIconComponent} from 'your/icon/components/path';
+
+const { SelectControl } = components;
+
+const customAttributes = {
+    newAttr: {
+        type: 'string',
+        default: 'default value',
+    },
+    ...attributes,
+};
+
+const edit = (props) => {
+    const { attributes: { newAttr }, setAttributes } = props;
+    return (
+        <Edit {...props}>
+            <SelectControl 
+                options={myAttributeSelectOptions} 
+                value={newAttr}
+                label={'My new attribute'}
+                onChange={(newAttr) => {
+                    setAttributes({ newAttr });
+                }}
+            />
+        </Edit>
+    );
+};
+
+register({
+    attributes: customAttributes,
+    edit,
+    icon: <MyIconComponent />,
+});
+```
+
 ### On the frontend
 
 ```js

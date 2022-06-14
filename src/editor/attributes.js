@@ -22,4 +22,12 @@ export const attributes = {
         type: 'string',
         default: 'youtube',
     },
+    type: {
+        type: 'string',
+        default: 'overlay',
+    },
+    videoEmbedUrl: {
+        type: 'string',
+        default: '',
+    },
 };
