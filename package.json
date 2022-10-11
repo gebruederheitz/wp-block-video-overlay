@@ -35,7 +35,7 @@
   "homepage": "https://github.com/gebruederheitz/wp-block-video-overlay#readme",
   "dependencies": {
     "@babel/runtime": "^7.14.6",
-    "@gebruederheitz/wp-editor-components": "^1.0.5",
+    "@gebruederheitz/wp-editor-components": "^1.2.0",
     "classnames": "^2.3.1",
     "core-js": "^3.15.2",
     "glightbox": "^3.0.9",

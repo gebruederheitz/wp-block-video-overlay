@@ -10,6 +10,7 @@ const {
     getYoutubeVideoIdFromUrl,
     isVimeoUrl,
     isYoutubeUrl,
+    isNocookieYoutubeUrl,
 } = videoProviderUtils;
 
 const { dispatch } = data;
@@ -81,16 +82,9 @@ export const onVideoUrlChanged = (videoUrl, props) => {
     if (isYoutubeUrl(videoUrl)) {
         const videoId = getYoutubeVideoIdFromUrl(videoUrl);
         setYoutubeThumbnailUrl(videoId, props);
-        // setAttributes({
-        //     videoUrl: videoUrl,
-        // });
-        // setState({ isLoading: false });
     } else if (isVimeoUrl(videoUrl)) {
         const videoId = getVimeoVideoIdFromUrl(videoUrl);
         setVimeoThumbnailUrl(videoId, props);
-        // setAttributes({
-        //     videoUrl: videoUrl,
-        // });
     } else {
         dispatch('core/notices').createWarningNotice(
             'Could not identify video provider. This URL might not work as expected.',
@@ -108,7 +102,7 @@ export const onVideoUrlChanged = (videoUrl, props) => {
 };
 
 export function convertYoutubeToNoCookieDomain(videoUrl) {
-    if (isYoutubeUrl(videoUrl)) {
+    if (isYoutubeUrl(videoUrl) && !isNocookieYoutubeUrl(videoUrl)) {
         const regex = /([^w.]*)((www\.)?\.?youtube\.com)(.*)/;
         videoUrl = videoUrl.replace(regex, '$1www.youtube-nocookie.com$4');
     }
