@@ -30,4 +30,8 @@ export const attributes = {
         type: 'string',
         default: '',
     },
+    ccLangPref: {
+        type: 'array',
+        default: [],
+    }
 };

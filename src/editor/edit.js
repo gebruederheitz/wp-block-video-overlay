@@ -6,6 +6,7 @@ import {
     sideloadProviderImage,
 } from './utils/videoSearchUtilities';
 import { getEmbedTypeOptions } from './utils/getEmbedTypeOptions';
+import { getCcLangPrefOptions } from './utils/getCcLangPrefOptions';
 
 import { PlayCircle as PlayIcon } from './components/PlayCircle';
 import {
@@ -76,11 +77,13 @@ const HelpPopoverContent = () => (
 
 const VideoEditSettings = (props) => {
     const {
-        attributes: { providerThumbnailUrl, videoUrl },
+        attributes: { providerThumbnailUrl, videoUrl, ccLangPref },
         helpVisible,
         isSelected,
         setState,
     } = props;
+
+    const ccLangPrefOptions = getCcLangPrefOptions();
 
     return (
         <div
@@ -126,6 +129,14 @@ const VideoEditSettings = (props) => {
                         buttonLabel="Select thumbnail"
                         buttonChangeLabel="Change thumbnail image"
                         {...props}
+                    />
+                    <SelectControl
+                      label={__('Caption Language Preference', 'ghwp')}
+                      value={ccLangPref}
+                      options={ccLangPrefOptions}
+                      onChange={(ccLangPref) => {
+                          setAttributes({ ccLangPref }); // @TODO: Add functionality to save this value
+                      }}
                     />
                     <span className="help">
                         <Button

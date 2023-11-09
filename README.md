@@ -177,6 +177,7 @@ window.editorData = {
     restCustomUrl: 'string', // REST API URL for the image Sideloader
     restApiNonce: 'string',  // The API nonce for request validation (CSRF/XSS)
     embedTypes: [], // An array of possible embed types when used with a consent management solution. Pass `null` to skip.
+    ccLangPrefs: [], // An array of language codes for the consent management solution. Pass an empty array to skip.
 }
 ```
 
