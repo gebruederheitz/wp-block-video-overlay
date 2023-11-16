@@ -135,7 +135,7 @@ const VideoEditSettings = (props) => {
                       value={ccLangPref}
                       options={ccLangPrefOptions}
                       onChange={(ccLangPref) => {
-                          setAttributes({ ccLangPref }); // @TODO: Add functionality to save this value
+                          setAttributes({ ccLangPref });
                       }}
                     />
                     <span className="help">
