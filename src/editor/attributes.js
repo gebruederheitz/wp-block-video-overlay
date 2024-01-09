@@ -30,4 +30,8 @@ export const attributes = {
         type: 'string',
         default: '',
     },
+    lazyLoadPreviewImage: {
+        type: 'boolean',
+        default: true,
+    },
 };
