@@ -24,6 +24,7 @@ const {
     Placeholder,
     Popover,
     SelectControl,
+    ToggleControl,
 } = components;
 const { withState } = wpCompose;
 const { __ } = i18n;
@@ -193,6 +194,19 @@ const TypeSelector = ({ attributes: { type, videoUrl }, setAttributes }) => (
     </BaseControl>
 );
 
+const LazyLoadSelector = ({
+    attributes: { lazyLoadPreviewImage },
+    setAttributes,
+}) => (
+    <ToggleControl
+        label={'LazyLoad preview image'}
+        checked={lazyLoadPreviewImage}
+        onChange={(lazyLoadPreviewImage) => {
+            setAttributes({ lazyLoadPreviewImage });
+        }}
+    />
+);
+
 const Edit = (props) => {
     const {
         attributes: { mediaAltText, mediaURL, providerType, videoUrl },
@@ -247,6 +261,7 @@ const Edit = (props) => {
                                         />
                                     )}
                                     <TypeSelector {...props} />
+                                    <LazyLoadSelector {...props} />
                                     {children}
                                 </>
                             )}
