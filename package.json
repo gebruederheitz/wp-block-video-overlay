@@ -13,7 +13,8 @@
     "build:rollup": "rollup -c ./.rollup.config.js",
     "build:styles": "gulp",
     "prepare": "npm run lint && npm run build",
-    "release": "release-it --only-version"
+    "release": "release-it --only-version",
+    "prerelease": "release-it --only-version --no-git.requireBranch"
   },
   "engines": {
     "node": ">=15"
