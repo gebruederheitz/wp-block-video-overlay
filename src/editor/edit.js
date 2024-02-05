@@ -78,14 +78,11 @@ const HelpPopoverContent = () => (
 
 const VideoEditSettings = (props) => {
     const {
-        attributes: { providerThumbnailUrl, videoUrl, ccLangPref },
+        attributes: { providerThumbnailUrl, videoUrl },
         helpVisible,
         isSelected,
-        setAttributes,
         setState,
     } = props;
-
-    const ccLangPrefOptions = getCcLangPrefOptions();
 
     return (
         <div
@@ -131,14 +128,6 @@ const VideoEditSettings = (props) => {
                         buttonLabel="Select thumbnail"
                         buttonChangeLabel="Change thumbnail image"
                         {...props}
-                    />
-                    <SelectControl
-                        label={__('Caption Language Preference', 'ghwp')}
-                        value={ccLangPref}
-                        options={ccLangPrefOptions}
-                        onChange={(ccLangPref) => {
-                            setAttributes({ ccLangPref });
-                        }}
                     />
                     <span className="help">
                         <Button
@@ -208,6 +197,21 @@ const LazyLoadSelector = ({
     />
 );
 
+const CaptionLanguageSelector = ({
+    options,
+    attributes: { ccLangPref },
+    setAttributes,
+}) => (
+    <SelectControl
+        label={__('Caption Language', 'ghwp')}
+        value={ccLangPref}
+        options={options}
+        onChange={(ccLangPref) => {
+            setAttributes({ ccLangPref });
+        }}
+    />
+);
+
 const Edit = (props) => {
     const {
         attributes: { mediaAltText, mediaURL, providerType, videoUrl },
@@ -224,6 +228,7 @@ const Edit = (props) => {
     }
 
     const embedTypeOptions = getEmbedTypeOptions();
+    const ccLangPrefOptions = getCcLangPrefOptions();
 
     return (
         <>
@@ -262,6 +267,12 @@ const Edit = (props) => {
                                         />
                                     )}
                                     <TypeSelector {...props} />
+                                    {ccLangPrefOptions && (
+                                        <CaptionLanguageSelector
+                                            options={ccLangPrefOptions}
+                                            {...props}
+                                        />
+                                    )}
                                     <LazyLoadSelector {...props} />
                                     {children}
                                 </>
