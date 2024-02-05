@@ -4,7 +4,8 @@ export function getCcLangPrefOptions() {
         return Object.keys(editorData.ccLangPrefs).map((ccLangPref) => {
             return {
                 label:
-                    editorData.ccLangPrefs[ccLangPref].displayName || ccLangPref,
+                    editorData.ccLangPrefs[ccLangPref].displayName ||
+                    ccLangPref,
                 value: ccLangPref,
             };
         });

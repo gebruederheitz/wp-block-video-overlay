@@ -132,12 +132,12 @@ const VideoEditSettings = (props) => {
                         {...props}
                     />
                     <SelectControl
-                      label={__('Caption Language Preference', 'ghwp')}
-                      value={ccLangPref}
-                      options={ccLangPrefOptions}
-                      onChange={(ccLangPref) => {
-                          setAttributes({ ccLangPref });
-                      }}
+                        label={__('Caption Language Preference', 'ghwp')}
+                        value={ccLangPref}
+                        options={ccLangPrefOptions}
+                        onChange={(ccLangPref) => {
+                            setAttributes({ ccLangPref });
+                        }}
                     />
                     <span className="help">
                         <Button
