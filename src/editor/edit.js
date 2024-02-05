@@ -81,6 +81,7 @@ const VideoEditSettings = (props) => {
         attributes: { providerThumbnailUrl, videoUrl, ccLangPref },
         helpVisible,
         isSelected,
+        setAttributes,
         setState,
     } = props;
 
