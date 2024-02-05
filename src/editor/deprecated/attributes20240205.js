@@ -9,14 +9,6 @@ export const attributes = {
     mediaAltText: {
         type: 'string',
     },
-    videoId: {
-        type: 'string',
-        default: '',
-    },
-    videoProvider: {
-        type: 'string',
-        default: '',
-    },
     videoUrl: {
         type: 'string',
     },
