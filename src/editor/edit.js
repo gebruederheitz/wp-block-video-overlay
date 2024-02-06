@@ -11,13 +11,18 @@ import {
     ImageSelect,
     SpinnerOverlay,
 } from '@gebruederheitz/wp-editor-components';
-import { getCcLangPrefOptions, getEmbedTypeOptions } from './utils/getOptions';
+import {
+    getCcLangPrefOptions,
+    getEmbedTypeOptions,
+    showPrivacyModeOption,
+} from './utils/getOptions';
 
 import { VideoSearch } from './components/VideoSearch';
 import { HelpPopoverContent } from './components/HelpPopoverContent';
 import { TypeSelector } from './components/TypeSelector';
 import { LazyLoadSelector } from './components/LazyLoadSelector';
 import { CaptionLanguageSelector } from './components/CaptionLanguageSelector';
+import { PrivacyModeSelector } from './components/PrivacyModeSelector';
 
 const { Button, Icon, Placeholder, Popover, SelectControl } = components;
 const { withState } = wpCompose;
@@ -163,6 +168,9 @@ const Edit = (props) => {
                                         />
                                     )}
                                     <LazyLoadSelector {...props} />
+                                    {showPrivacyModeOption() && (
+                                        <PrivacyModeSelector {...props} />
+                                    )}
                                     {children}
                                 </>
                             )}
