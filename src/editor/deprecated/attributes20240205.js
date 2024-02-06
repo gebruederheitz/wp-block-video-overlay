@@ -9,14 +9,6 @@ export const attributes = {
     mediaAltText: {
         type: 'string',
     },
-    videoId: {
-        type: 'string',
-        default: '',
-    },
-    videoProvider: {
-        type: 'string',
-        default: '',
-    },
     videoUrl: {
         type: 'string',
     },
@@ -45,9 +37,5 @@ export const attributes = {
     ccLangPref: {
         type: 'string',
         default: '',
-    },
-    usePrivacyMode: {
-        type: 'boolean',
-        default: false,
     },
 };

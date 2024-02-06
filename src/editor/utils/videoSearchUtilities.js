@@ -79,11 +79,16 @@ export const onVideoUrlChanged = (videoUrl, props) => {
 
     setState({ isLoading: true });
 
+    let videoId = '';
+    let videoProvider = '';
+
     if (isYoutubeUrl(videoUrl)) {
-        const videoId = getYoutubeVideoIdFromUrl(videoUrl);
+        videoId = getYoutubeVideoIdFromUrl(videoUrl);
+        videoProvider = 'youtube';
         setYoutubeThumbnailUrl(videoId, props);
     } else if (isVimeoUrl(videoUrl)) {
-        const videoId = getVimeoVideoIdFromUrl(videoUrl);
+        videoId = getVimeoVideoIdFromUrl(videoUrl);
+        videoProvider = 'vimeo';
         setVimeoThumbnailUrl(videoId, props);
     } else {
         dispatch('core/notices').createWarningNotice(
@@ -96,7 +101,9 @@ export const onVideoUrlChanged = (videoUrl, props) => {
     }
 
     setAttributes({
-        videoUrl: videoUrl,
+        videoUrl,
+        videoId,
+        videoProvider,
     });
     setState({ isLoading: false });
 };
