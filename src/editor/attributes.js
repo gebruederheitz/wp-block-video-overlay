@@ -46,4 +46,8 @@ export const attributes = {
         type: 'string',
         default: '',
     },
+    usePrivacyMode: {
+        type: 'boolean',
+        default: false,
+    },
 };

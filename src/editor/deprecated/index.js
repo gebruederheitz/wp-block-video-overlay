@@ -37,6 +37,7 @@ export const deprecated = [
                 ...attributes,
                 videoId,
                 videoProvider,
+                usePrivacyMode: false,
             };
         },
     },
