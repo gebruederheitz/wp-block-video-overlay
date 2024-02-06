@@ -21,12 +21,18 @@ $ghwp-vo-help-font-size: 0.666em !default;
     background-color: $ghwp-vo-bg-color;
 }
 
+[data-type="ghwp/video-overlay"].is-selected .ghwp-video-link {
+    max-width: none;
+}
+
 .ghwp-video-edit {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
+    gap: .5rem;
 
     .ghwp-video {
-        flex: 1 1 600px;
+        flex: 1 0 300px;
         background: transparent;
     }
 
@@ -67,15 +73,24 @@ $ghwp-vo-help-font-size: 0.666em !default;
         transition: all 200ms ease;
 
         &--active {
-            flex-basis: 100%;
+            flex-basis: 180px;
+            flex-grow: 1;
             padding: 12px;
             border-top: 1px solid #aaa;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
         }
     }
 
     &__provider-thumb {
         width: 100%;
         height: auto;
+    }
+
+    &__type-select-field {
+        display: flex;
+        flex-direction: column;
     }
 
     .wp-core-ui select {

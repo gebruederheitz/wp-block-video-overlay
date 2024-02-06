@@ -5,78 +5,25 @@ import {
     checkForThumbnailImage,
     sideloadProviderImage,
 } from './utils/videoSearchUtilities';
-import { getEmbedTypeOptions } from './utils/getEmbedTypeOptions';
-import { getCcLangPrefOptions } from './utils/getCcLangPrefOptions';
 
 import { PlayCircle as PlayIcon } from './components/PlayCircle';
 import {
     ImageSelect,
     SpinnerOverlay,
 } from '@gebruederheitz/wp-editor-components';
-import { VideoSearch } from './components/VideoSearch';
-import { getVideoEmbed } from '@gebruederheitz/wp-editor-components/utils/video-provider-utilities';
+import { getCcLangPrefOptions, getEmbedTypeOptions } from './utils/getOptions';
 
-const {
-    BaseControl,
-    Button,
-    ButtonGroup,
-    Icon,
-    Placeholder,
-    Popover,
-    SelectControl,
-    ToggleControl,
-} = components;
+import { VideoSearch } from './components/VideoSearch';
+import { HelpPopoverContent } from './components/HelpPopoverContent';
+import { TypeSelector } from './components/TypeSelector';
+import { LazyLoadSelector } from './components/LazyLoadSelector';
+import { CaptionLanguageSelector } from './components/CaptionLanguageSelector';
+
+const { Button, Icon, Placeholder, Popover, SelectControl } = components;
 const { withState } = wpCompose;
 const { __ } = i18n;
 
-const helpPopoverH6Style = {
-    textTransform: 'none',
-    marginBottom: '0.5em',
-    fontSize: '1rem',
-    marginTop: 0,
-};
-
-const HelpPopoverContent = () => (
-    <div
-        className="ghwp-editor-help"
-        style={{ padding: '0.75rem 1.5rem', minWidth: '320px' }}
-    >
-        <ul style={{ listStyle: 'disc' }}>
-            <li>
-                <h6 style={helpPopoverH6Style}>
-                    {__('Retry getting original thumbnail', 'ghwp')} /{' '}
-                    {__('Try to get the original thumbnail', 'ghwp')}
-                </h6>
-                <p>
-                    Attempts to retrieve the thumbnail image from the Video
-                    provider (Youtube / Vimeo). You will see a preview of that
-                    image above the button.
-                </p>
-            </li>
-            <li>
-                <h6 style={helpPopoverH6Style}>
-                    {__('Sideload the provider image', 'ghwp')}
-                </h6>
-                <p>
-                    Will save the thumbnail retrieved from the video provider to
-                    the local media library and set it as the video block&apos;s
-                    thumbnail image.
-                </p>
-            </li>
-            <li>
-                <h6 style={helpPopoverH6Style}>
-                    {__('Change thumbnail image', 'ghwp')}
-                </h6>
-                <p>
-                    Allows you to pick an existing image or upload an image to
-                    use as the thumbnail picture for the video block.
-                </p>
-            </li>
-        </ul>
-    </div>
-);
-
-const VideoEditSettings = (props) => {
+const VideoThumbnailSettings = (props) => {
     const {
         attributes: { providerThumbnailUrl, videoUrl },
         helpVisible,
@@ -154,64 +101,6 @@ const VideoEditSettings = (props) => {
     );
 };
 
-const TypeSelector = ({ attributes: { type, videoUrl }, setAttributes }) => (
-    <BaseControl label={'Type'}>
-        <ButtonGroup>
-            <Button
-                isPrimary
-                isPressed={type === 'overlay'}
-                onClick={() => {
-                    setAttributes({
-                        type: 'overlay',
-                    });
-                }}
-            >
-                Overlay
-            </Button>
-            <Button
-                isPrimary
-                isPressed={type === 'inline'}
-                onClick={() => {
-                    setAttributes({
-                        type: 'inline',
-                        videoEmbedUrl: getVideoEmbed(videoUrl),
-                    });
-                }}
-            >
-                Inline
-            </Button>
-        </ButtonGroup>
-    </BaseControl>
-);
-
-const LazyLoadSelector = ({
-    attributes: { lazyLoadPreviewImage },
-    setAttributes,
-}) => (
-    <ToggleControl
-        label={'LazyLoad preview image'}
-        checked={lazyLoadPreviewImage}
-        onChange={(lazyLoadPreviewImage) => {
-            setAttributes({ lazyLoadPreviewImage });
-        }}
-    />
-);
-
-const CaptionLanguageSelector = ({
-    options,
-    attributes: { ccLangPref },
-    setAttributes,
-}) => (
-    <SelectControl
-        label={__('Caption Language', 'ghwp')}
-        value={ccLangPref}
-        options={options}
-        onChange={(ccLangPref) => {
-            setAttributes({ ccLangPref });
-        }}
-    />
-);
-
 const Edit = (props) => {
     const {
         attributes: { mediaAltText, mediaURL, providerType, videoUrl },
@@ -236,6 +125,7 @@ const Edit = (props) => {
                 {isLoading && <SpinnerOverlay />}
                 {videoUrl ? (
                     <>
+                        {isSelected && <VideoSearch {...props} />}
                         <div className="ghwp-video">
                             <div className="ghwp-video-link">
                                 <img
@@ -247,7 +137,7 @@ const Edit = (props) => {
                                 <PlayIcon />
                             </div>
                         </div>
-                        <VideoEditSettings {...props} />
+                        <VideoThumbnailSettings {...props} />
                         <div
                             className={classnames('ghwp-video-edit__search', {
                                 'ghwp-video-edit__search--active': isSelected,
@@ -255,7 +145,6 @@ const Edit = (props) => {
                         >
                             {isSelected && (
                                 <>
-                                    <VideoSearch {...props} />
                                     {embedTypeOptions && (
                                         <SelectControl
                                             label={__('Consent Typ')}
