@@ -116,6 +116,10 @@ lbf.all('#my-lightbox');
 lbf.all('[href$=".webp"]');
 // Use a custom selector
 lbf.create('.lightbox');
+// Init from an element – this method respects the "cc_lang_pref" query parameter
+// in the link's URL in order to enable caption loading on the video.
+const myTrigger = document.querySelector('a[href^="https://youtu"]');
+lbf.createFromElement(myTrigger);
 // Use a custom configuration object for GLightbox
 lbf.custom({
   /* GLightbox configuration object */

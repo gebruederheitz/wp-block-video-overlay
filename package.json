@@ -17,7 +17,7 @@
     "beta-release": "release-it --only-version --no-git.requireBranch"
   },
   "engines": {
-    "node": ">=15"
+    "node": ">=16"
   },
   "repository": {
     "type": "git",

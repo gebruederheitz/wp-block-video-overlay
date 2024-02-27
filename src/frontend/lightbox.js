@@ -17,9 +17,7 @@ const defaultPlyrOptions = {
  * @propery {DebugHelper} debug
  */
 export class LightboxFactory {
-    constructor(plyrOptions = {}, debugEnabled = false) {
-        this.debug = debugEnabled;
-
+    constructor(plyrOptions = {}) {
         this.plyrOptions =
             plyrOptions === false
                 ? null
@@ -85,17 +83,6 @@ export class LightboxFactory {
 
         if (this.plyrOptions) {
             const options = { ...this.plyrOptions };
-
-            if (this.debug) {
-                console.log(
-                    'Creating from element with base options',
-                    element,
-                    {
-                        ...options,
-                    }
-                );
-            }
-
             const hrefUrl = element.href ? new URL(element.href) : null;
 
             if (hrefUrl && hrefUrl.searchParams.has('cc_lang_pref')) {
@@ -104,9 +91,6 @@ export class LightboxFactory {
                     active: true,
                     language,
                 };
-                if (this.debug) {
-                    console.log('language is defined:', options);
-                }
             }
 
             lb = new GLightbox({
@@ -132,8 +116,11 @@ export class LightboxFactory {
      * @return {GLightbox}
      */
     custom(options) {
-        if (this.plyrOptions && !options.plyr) {
-            options.plyr = this.plyrOptions;
+        if (this.plyrOptions) {
+            options.plyr = {
+                ...this.plyrOptions,
+                ...options.plyr,
+            };
         }
 
         return new GLightbox(options);
