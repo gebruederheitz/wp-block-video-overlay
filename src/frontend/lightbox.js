@@ -108,11 +108,11 @@ export class LightboxFactory {
             }
 
             return new GLightbox({
-                element,
+                elements: [element],
                 plyr: options,
             });
         } else {
-            return new GLightbox({ element });
+            return new GLightbox({ elements: [element] });
         }
     }
 
