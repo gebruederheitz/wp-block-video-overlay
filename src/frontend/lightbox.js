@@ -55,7 +55,7 @@ export class LightboxFactory {
     /**
      * Initializes a single lightbox / modal.
      *
-     * @param selector
+     * @param {string} selector
      * @return {GLightbox}
      */
     create(selector) {
@@ -66,6 +66,35 @@ export class LightboxFactory {
             });
         } else {
             return new GLightbox({ selector });
+        }
+    }
+
+    /**
+     * Initializes a single lightbox / modal.
+     *
+     * @param {HTMLElement} element
+     * @return {GLightbox}
+     */
+    createFromElement(element) {
+        if (this.plyrOptions) {
+            const options = { ...this.plyrOptions };
+
+            if (element.href?.contains('cc-lang-pref')) {
+                const language = new URL(element.href).searchParams.get(
+                    'cc-lang-pref'
+                );
+                options.captions = {
+                    active: true,
+                    language,
+                };
+            }
+
+            return new GLightbox({
+                element,
+                plyr: options,
+            });
+        } else {
+            return new GLightbox({ element });
         }
     }
 
