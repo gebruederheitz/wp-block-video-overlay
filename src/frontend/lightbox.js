@@ -81,6 +81,8 @@ export class LightboxFactory {
      * @return {GLightbox}
      */
     createFromElement(element) {
+        let lb;
+
         if (this.plyrOptions) {
             const options = { ...this.plyrOptions };
 
@@ -107,13 +109,18 @@ export class LightboxFactory {
                 }
             }
 
-            return new GLightbox({
+            lb = new GLightbox({
                 elements: [element],
                 plyr: options,
             });
         } else {
-            return new GLightbox({ elements: [element] });
+            lb = new GLightbox({ elements: [element] });
         }
+
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            lb.open();
+        });
     }
 
     /**
