@@ -4,7 +4,6 @@
 
 import GLightbox from 'glightbox/src/js/glightbox';
 import _merge from 'lodash-es/merge';
-import { debug } from '@gebruederheitz/debuggable';
 
 const defaultPlyrOptions = {
     js: null,
@@ -19,8 +18,7 @@ const defaultPlyrOptions = {
  */
 export class LightboxFactory {
     constructor(plyrOptions = {}, debugEnabled = false) {
-        this.debug = debug.spawn('LightboxFactory');
-        this.debug.toggle(debugEnabled);
+        this.debug = debugEnabled;
 
         this.plyrOptions =
             plyrOptions === false
@@ -86,9 +84,15 @@ export class LightboxFactory {
         if (this.plyrOptions) {
             const options = { ...this.plyrOptions };
 
-            this.debug.log('Creating from element with base options', element, {
-                ...options,
-            });
+            if (this.debug) {
+                console.log(
+                    'Creating from element with base options',
+                    element,
+                    {
+                        ...options,
+                    }
+                );
+            }
 
             const hrefUrl = element.href ? new URL(element.href) : null;
 
@@ -98,7 +102,9 @@ export class LightboxFactory {
                     active: true,
                     language,
                 };
-                this.debug.log('language is defined:', options);
+                if (this.debug) {
+                    console.log('language is defined:', options);
+                }
             }
 
             return new GLightbox({
