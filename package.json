@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/wp-block-video-overlay",
-  "version": "2.1.0-beta.6",
+  "version": "2.1.0-beta.7",
   "description": "A Gutenberg block creating a video in a lightbox",
   "main": "index.js",
   "module": "index.js",
