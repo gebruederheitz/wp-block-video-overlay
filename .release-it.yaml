@@ -12,3 +12,6 @@ hooks:
         - make test
         - make build
     after:release: "echo Successfully released ${name} v${version} to ${repo.repository} and NPM."
+    after:bump:
+        - asdf exec npm i
+        - git add package-lock.json

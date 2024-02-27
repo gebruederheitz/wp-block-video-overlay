@@ -1,24 +1,17 @@
-build:
-	@. $$NVM_DIR/nvm.sh &&\
-		nvm use && \
-		npm i && npm run build
+install:
+	asdf exec npm i
 
-test:
-	@. $$NVM_DIR/nvm.sh &&\
-		nvm use && \
-		npm i && npm run lint
+build: install
+	asdf exec npm run build
 
-dev:
-	@. $$NVM_DIR/nvm.sh &&\
- 		nvm use && \
-		npm i && npm run build
+test: install
+	asdf exec npm run lint
 
-release:
-	@. $$NVM_DIR/nvm.sh &&\
- 		nvm use && \
-		npm run release
+dev: install
+	asdf exec npm run build
+
+release: install
+	asdf exec npm run release
 
 prerelease:
-	@. $$NVM_DIR/nvm.sh &&\
- 		nvm use && \
-		npm run beta-release
+	asdf exec npm run beta-release
