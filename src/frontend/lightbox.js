@@ -96,7 +96,7 @@ export class LightboxFactory {
 
             const hrefUrl = element.href ? new URL(element.href) : null;
 
-            if (hrefUrl && hrefUrl.has('cc_lang_pref')) {
+            if (hrefUrl && hrefUrl.searchParams.has('cc_lang_pref')) {
                 const language = hrefUrl.searchParams.get('cc_lang_pref');
                 options.captions = {
                     active: true,
