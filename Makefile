@@ -21,4 +21,4 @@ release:
 prerelease:
 	@. $$NVM_DIR/nvm.sh &&\
  		nvm use && \
-		npm run prerelease
+		npm run beta-release
