@@ -121,6 +121,8 @@ export class LightboxFactory {
             e.preventDefault();
             lb.open();
         });
+
+        return lb;
     }
 
     /**
