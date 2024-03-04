@@ -1,17 +1,16 @@
 import { components, i18n } from 'wp';
 
-const { SelectControl } = components;
+const { TextControl } = components;
 const { __ } = i18n;
 
 export const CaptionLanguageSelector = ({
-    options,
     attributes: { ccLangPref },
     setAttributes,
 }) => (
-    <SelectControl
+    <TextControl
         label={__('Caption Language', 'ghwp')}
         value={ccLangPref}
-        options={options}
+        placeholder={'ex. "en", "en-GB", "de", "de-DE", "fr"...'}
         onChange={(ccLangPref) => {
             setAttributes({ ccLangPref });
         }}

@@ -122,7 +122,7 @@ const Edit = (props) => {
     }
 
     const embedTypeOptions = getEmbedTypeOptions();
-    const ccLangPrefOptions = getCcLangPrefOptions();
+    const ccSelectEnabled = getCcLangPrefOptions();
 
     return (
         <>
@@ -161,11 +161,8 @@ const Edit = (props) => {
                                         />
                                     )}
                                     <TypeSelector {...props} />
-                                    {ccLangPrefOptions && (
-                                        <CaptionLanguageSelector
-                                            options={ccLangPrefOptions}
-                                            {...props}
-                                        />
+                                    {ccSelectEnabled && (
+                                        <CaptionLanguageSelector {...props} />
                                     )}
                                     <LazyLoadSelector {...props} />
                                     {showPrivacyModeOption() && (
